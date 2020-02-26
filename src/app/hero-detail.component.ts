@@ -3,6 +3,7 @@ import { Hero } from './hero';
 
 // @Component Decorator는 Component의 Angular메타 데이터를 제공합니다. CSS선택자 이름인 hero-detail은 상위 Component의 템플릿 내에서 이 Component를 식별하는 엘리먼트 태그와 일치합니다.
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'hero-detail', // CSS selector인 이 이름은 HeroDetailComponent를 나타내는 엘리먼트 태그 이름임<hero-detail></hero-detail>의 형태로 사용
   template: `
     <div *ngIf="hero"> <!-- detail画像を他のComponentにして、。 -->
