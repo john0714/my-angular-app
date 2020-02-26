@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Hero } from './hero';
 
 // Create Array
 const HEROS: Hero[] = [
@@ -13,12 +14,6 @@ const HEROS: Hero[] = [
   { id: 19, name: 'Magma'  },
   { id: 20, name: 'Tornado'  }
 ];
-
-// 複数Export可能, Object(안에 있는 id, name같은건 Property)作成
-export class Hero {
-  id: number;
-  name: string;
-}
 
 // this is angular/core decorator template
 // 이중 중괄호는 Angular의 Interpolation 바인딩 구문. -> React-JSX의 {}와 비슷
@@ -41,14 +36,7 @@ export class Hero {
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero"> <!-- detail画像はselectedHeroがある時見せる。 -->
-      <h2>{{selectedHero.name}} details!</h2> <!-- Detail템플릿(master/detail UI패턴)-->
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-    </div>
+    <hero-detail [hero]="selectedHero"></hero-detail> <!-- 이제 hero-detail에선 selectedHero를 표시하게됨 -->
   `, // CSS추가
   styles: [`
     .selected {
