@@ -10,7 +10,6 @@ import { HeroService } from './hero.service';
 @Component({
   selector: 'app-my-heroes',
   template: `
-    <h1>{{title}}</h1>
     <h2>My Heroes</h2>
     <ul class="heroes">
       <!-- 특정 조건을 만족할때 li에 Anlugar의 selected CSS클래스를 추가해서 스타일을 변경함 -->
@@ -76,11 +75,10 @@ import { HeroService } from './hero.service';
       border-radius: 4px 0 0 4px;
     }
   `],
-  providers: [HeroService] // providers는 Angular에게 AppComponent를 생성할 때 HeroService의 새로운 인스턴스를 생성하도록 지시함
+  providers: []
 })
 
 export class HeroesComponent implements OnInit {
-  title = 'Tour of Heroes - Kim';
   selectedHero: Hero; // AppComponentクラスで、ComponentのheroプロパティがHeroタイプにrefactoringされ、id = 1, name = Windstormに初期化されます。
   heroes: Hero[]; // Create public property for viewing HEROES(Heroes 항목 지정. heroes = Hero[]하면 값을 넣어는 의미가 되서 초기 데이터 없다고 Lint에러 뜨므로 「:」를 씀)
   // typeScript에서「:」은 형식의 체크 및 지정을 해주는 명령. 따라서 위에선 단순히 Hero라는 배열이란 것을 heroes변수에 지정한다는 의미가 된다.
