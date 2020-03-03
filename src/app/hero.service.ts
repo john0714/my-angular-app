@@ -9,6 +9,11 @@ import { HEROES } from './mock-heros';
 export class HeroService {
   // Hero서비스를 Promise로 만들기
   // Promise는 본질적으로 결과가 준비될 때 콜백 할것을 약속합니다. 비동기 Service작업을 수행하고 콜백 기능을 제공하도록 요청합니다.
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
+  }
+
   getHeroes(): Promise<Hero[]> {
     return Promise.resolve(HEROES);
   }
