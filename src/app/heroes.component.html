@@ -14,7 +14,7 @@
 </ul>
 <div *ngIf="selectedHero">
   <h2>
-    {{selectedHero.name | uppercase}} is my hero <!-- Pipe 연산자「|」을 이용-->
+    {{selectedHero.name | uppercase}} is my hero <!-- 데이터 서식을 지정하기 위해 Pipe 연산자「|」을 이용 -->
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
