@@ -1,4 +1,10 @@
 <h2>My Heroes</h2>
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
 <ul class="heroes">
   <!-- 특정 조건을 만족할때 li에 Anlugar의 selected CSS클래스를 추가해서 스타일을 변경함 -->
   <li *ngFor="let hero of heroes"
