@@ -5,7 +5,8 @@
 
 [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.<br>
 [Angular](https://angular.io/) version 9.0.2<br>
-[Node](https://nodejs.org/en/) version 10.18.1
+[Node](https://nodejs.org/en/) version 10.18.1<br>
+[TypeScript](https://www.typescriptlang.org/) version 3.7.5
 
 ## 起動
 
