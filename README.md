@@ -1,27 +1,36 @@
 # MyAngularApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+このプログラムは、 Angularを使って英雄の一覧を表示、登録、更新、削除するWeb Applicationです。<br>
+ベースコードはAngular CLIで構築されました。
 
-## Development server
+[Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.<br>
+[Angular](https://angular.io/) version 9.0.2<br>
+[Node](https://nodejs.org/en/) version 10.18.1
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 起動
 
-## Code scaffolding
+初回起動のみ、nodeモジュール設置必要
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install
+```
 
-## Build
+サーバ起動
+```
+ng serve
+```
+または
+```
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ローカルサーバ住所は基本的に `http://localhost:4200/`に設定されてます。
 
-## Running unit tests
+## 備考
+Angularチュートリアルに従いコードを作成しましたが、<br>
+バージョンの差で起動できない部分があり、 一部のコードは独自で書きました。<br>
+実行環境はトップの内容を参照してください。
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## 参考
+公式サイト : https://angular.io/tutorial<br>
+韓国語版 ： https://infoscis.github.io/2017/07/21/angular-tutorial-introduction/
