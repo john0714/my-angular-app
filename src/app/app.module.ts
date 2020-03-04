@@ -15,6 +15,7 @@ import { HeroDetailComponent } from './hero-detail.component'; // 모든 컴포�
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
+import { HeroSearchComponent } from './hero-search.component';
 
 @NgModule({
   // 일반적으로 declarations배열은 모듈에 속한 Component, Pipe 및 Directive응용 프로그램 목록을 포함함.(자세한건 NgModules가이드 참고)
@@ -23,13 +24,16 @@ import { DashboardComponent } from './dashboard.component';
     AppComponent,
     DashboardComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule, // 앱의 어느곳에서나 http서비스에 접근할 수 있게하기 위해 AppModule의 import에 HttpClinetModule(over Angular7)을 추가
-    InMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    InMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+      ),
     AppRoutingModule,
   ],
   providers: [

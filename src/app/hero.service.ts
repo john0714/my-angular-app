@@ -8,14 +8,27 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  // 각각의 Http Service메소드는 HTTP Response객체의 Observable을 반환(return)합니다.
+  // 지금 방식에성 HeroService가 Observable을 Promise로 변환하고 호출자에게 Promise를 return함(최신 튜토리얼에선 그냥 Observable객체를 return함)
+
+  // Observable은 배열과 비슷한 연산자로 처리할수있는 Angular의 이벤트 스트림입니다.
+  // Angular core는 Observable을 기본적으로 지원합니다.(개발자는 RxJS Library의 연산자 및 확장 프로그램을 사용해 지원을 확대할수있음 - 최신 튜토리얼에 반영한듯)
+  // HeroService는 toPromise 연산자를 http.get()의 Observable 결과에 연결 시켰습니다. 그 연산자는 Observable을 Primise로 변환했고 그 Promise를 호출자에게 다시 전달했음.
 
   // Hero서비스를 Promise로 만들기
   // Promise는 본질적으로 결과가 준비될 때 콜백 할것을 약속합니다. 비동기 Service작업을 수행하고 콜백 기능을 제공하도록 요청합니다.
   getHero(id: number): Promise<Hero> { // get-by-id형식으로 API에서 값을 받아옴
     const url = `${this.heroesUrl}/${id}`;
+
     return this.http.get(url)
       .toPromise()
       .then(response => response.valueOf() as Hero)
@@ -31,8 +44,8 @@ export class HeroService {
 
   update(hero: Hero): Promise<Hero> {
     const url = `${this.heroesUrl}/${hero.id}`;
-    return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers}) // put()을 사용하여 서버에 변경을 지속함
+
+    return this.http.put(url, hero, this.httpOptions) // put()을 사용하여 서버에 변경을 지속함
       .toPromise()
       .then(() => hero)
       .catch(this.handleError);
@@ -40,9 +53,18 @@ export class HeroService {
 
   create(name: string): Promise<Hero> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.heroesUrl, {name}, this.httpOptions)
       .toPromise()
       .then(res => res.valueOf() as Hero)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete(url, this.httpOptions)
+      .toPromise()
+      .then(() => null)
       .catch(this.handleError);
   }
 
